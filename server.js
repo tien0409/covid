@@ -1,10 +1,11 @@
-const express = require("express");
+require('dotenv').config();
+const express = require('express');
 
 const app = express();
 const PORT = 8080;
 
-app.get("/", (req, res)=> {
-    res.send("hello world");
-});
+// import utils
+const conn = require('./utils/db');
+conn();
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
