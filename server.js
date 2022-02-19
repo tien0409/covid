@@ -12,11 +12,16 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+// require('./seeder');
 // routes
 const vaccineRoute = require('./routes/vaccine.route');
 const userRoute = require('./routes/user.route');
+const infectedSubjectRoute = require('./routes/infected-subject.route');
+const provinceRoute = require('./routes/province.route');
 
 app.use('/api/vaccines', vaccineRoute),
 app.use('/api/users', userRoute);
+app.use('/api/infected-subject', infectedSubjectRoute);
+app.use('/api/provinces', provinceRoute);
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
