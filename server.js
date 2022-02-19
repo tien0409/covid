@@ -2,18 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const mssql = require('mssql');
 
 const app = express();
 const PORT = 8080;
 
-// import utils
-const conn = require('./utils/db');
-conn(mssql);
-
 // middlewares
 app.use(morgan('dev'));
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // routes
 const vaccineRoute = require('./routes/vaccine.route');

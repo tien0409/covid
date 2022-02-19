@@ -1,3 +1,7 @@
+const mssql = require('mssql');
+
+let pool;
+
 const sqlConfig = {
     user: process.env.USER_SQL,
     password: process.env.PASS_SQL,
@@ -9,10 +13,10 @@ const sqlConfig = {
     }
 };
 
-const connectDb = async (mssql) =>  {
+const connectDb = async () =>  {
     try {
-        await mssql.connect(sqlConfig);
-        console.log('Connect success');
+        pool = await mssql.connect(sqlConfig);
+        return pool;
     } catch(err) {
         console.log('Connect faild');
         process.exit(-1);
