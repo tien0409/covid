@@ -1,4 +1,3 @@
-const mssql = require('mssql');
 const sqlConfig = {
     user: process.env.USER_SQL,
     password: process.env.PASS_SQL,
@@ -10,7 +9,7 @@ const sqlConfig = {
     }
 };
 
-const connectDb = async () =>  {
+const connectDb = async (mssql) =>  {
     try {
         await mssql.connect(sqlConfig);
         console.log('Connect success');
