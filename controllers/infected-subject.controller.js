@@ -33,5 +33,22 @@ module.exports = {
                 data: null
             });
         }
+    },
+
+    async getCSCL (req, res) {
+        try {
+            const pool = await connectDb();
+            const {recordset} = await pool.query('select * from CO_SO_CACH_LY');
+
+            res.json({
+                message: '',
+                data: {CSCL: recordset}
+            });
+        } catch(_) {
+            res.status(500).json({
+                message: _.message || 'Có lỗi xảy ra. Vui lòng thử lại sau',
+                data: null
+            });
+        }
     }
 };
