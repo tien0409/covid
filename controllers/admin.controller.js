@@ -28,7 +28,7 @@ module.exports = {
                     data: {
                         user: {
                             MaDonVi: recordset[0].MaDonVi,
-                            TenDonVi: recordset[0].MaDonVi,
+                            TenDonVi: recordset[0].TenDonVi,
                         }
                     }
                 });
